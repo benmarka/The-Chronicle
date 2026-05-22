@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Chronicles — A Century in Snapshots</title>
+  <meta name="description" content="History year by year — politics, culture, science, art and society across the twentieth century.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html">
+      <span class="site-title">The Chronicles</span>
+    </a>
+    <span class="site-subtitle">A Century in Snapshots</span>
+  </header>
+
+  <div class="index-hero">
+    <h1>The Chronicles</h1>
+    <p class="tagline">History, year by year — politics, culture, science, art &amp; society</p>
+    <div class="rule"></div>
+  </div>
+
+  <main class="index-main">
+
+    <a href="essays/ep0.html" class="prologue-card">
+      <div class="prologue-ep">0</div>
+      <div class="prologue-text">
+        <div class="prologue-label">Prologue</div>
+        <div class="prologue-title">The World at the Threshold</div>
+        <div class="prologue-desc">The landscape of 1900 — standing at the edge of a new century.</div>
+      </div>
+    </a>
+
+    <div id="decades"></div>
+
+  </main>
+
+  <footer class="site-footer">
+    The Chronicles &mdash; Essays added as the project grows 
+  </footer>
+
+  <script>
+    // Add new essays here as you write them.
+    // Key = year (number), value = { title, file }
+    const published = {
+      1900: { title: "The Illusion of Stability", file: "essays/1900.html" },
+      1901: { title: "Invisible Threads", file: "essays/1901.html" },
+      1902: { title: "False Tonic", file: "essays/1902.html" },
+      1903: { title: "New Horizons", file: "essays/1903.html"},
+      1904: { title: "Ruptures", file: "essays/1904.html"},
+      1905: { title: "Relativity", file: "essays/1905.html"},
+    };
+
+    const decades = [
+      { label: "1900s", start: 1900 },
+      { label: "1910s", start: 1910 },
+      { label: "1920s", start: 1920 },
+      { label: "1930s", start: 1930 },
+      { label: "1940s", start: 1940 },
+      { label: "1950s", start: 1950 },
+      { label: "1960s", start: 1960 },
+      { label: "1970s", start: 1970 },
+      { label: "1980s", start: 1980 },
+      { label: "1990s", start: 1990 },
+    ];
+
+    const container = document.getElementById('decades');
+
+    decades.forEach(({ label, start }) => {
+      const block = document.createElement('div');
+      block.className = 'decade-block';
+
+      const heading = document.createElement('div');
+      heading.className = 'decade-heading';
+      heading.textContent = label;
+      block.appendChild(heading);
+
+      const grid = document.createElement('div');
+      grid.className = 'year-grid';
+
+      for (let y = start; y < start + 10; y++) {
+        const essay = published[y];
+        if (essay) {
+          const a = document.createElement('a');
+          a.className = 'year-cell published';
+          a.href = essay.file;
+          a.title = `${y}: ${essay.title}`;
+          a.setAttribute('aria-label', `${y} — ${essay.title}`);
+          a.innerHTML = `${y}<span class="dot" aria-hidden="true"></span>`;
+          grid.appendChild(a);
+        } else {
+          const div = document.createElement('div');
+          div.className = 'year-cell';
+          div.setAttribute('aria-label', `${y} — not yet published`);
+          div.textContent = y;
+          grid.appendChild(div);
+        }
+      }
+
+      block.appendChild(grid);
+      container.appendChild(block);
+    });
+  </script>
+
+</body>
+</html>

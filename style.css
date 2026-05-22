@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ink: #1a1814;
+  --ink-mid: #4a4540;
+  --ink-light: #8a847c;
+  --ink-faint: #c8c2b8;
+  --paper: #faf8f4;
+  --paper-warm: #f2ede4;
+  --paper-rule: #e8e2d8;
+  --accent: #8b3a2a;
+  --accent-light: #c4735f;
+  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --body: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+  --max-width: 860px;
+  --essay-width: 680px;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 400;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── SHARED HEADER ── */
+
+.site-header {
+  border-bottom: 1px solid var(--paper-rule);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.site-header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.site-subtitle {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  font-weight: 300;
+}
+
+/* ── SHARED FOOTER ── */
+
+.site-footer {
+  border-top: 1px solid var(--paper-rule);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  font-family: var(--body);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 4rem;
+}
+
+/* ── INDEX PAGE ── */
+
+.index-hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--paper-rule);
+  margin-bottom: 3rem;
+}
+
+.index-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.index-hero .tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink-mid);
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.index-hero .rule {
+  width: 40px;
+  height: 1px;
+  background: var(--ink-faint);
+  margin: 0 auto;
+}
+
+.index-main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+}
+
+/* Prologue card */
+
+.prologue-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border: 1px solid var(--paper-rule);
+  border-radius: 2px;
+  margin-bottom: 3rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+  background: var(--paper);
+}
+
+.prologue-card:hover {
+  background: var(--paper-warm);
+}
+
+.prologue-ep {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ink-faint);
+  min-width: 3rem;
+  line-height: 1;
+  padding-top: 0.15rem;
+}
+
+.prologue-text {}
+
+.prologue-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 0.2rem;
+}
+
+.prologue-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+
+.prologue-desc {
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+}
+
+/* Decade blocks */
+
+.decade-block {
+  margin-bottom: 2.5rem;
+}
+
+.decade-heading {
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--paper-rule);
+}
+
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+}
+
+@media (max-width: 600px) {
+  .year-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.year-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--paper-rule);
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  cursor: default;
+  border-radius: 1px;
+  position: relative;
+  transition: all 0.12s;
+  text-decoration: none;
+}
+
+.year-cell.published {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.year-cell.published:hover {
+  background: var(--paper-warm);
+  border-color: var(--ink-mid);
+  color: var(--accent);
+}
+
+.year-cell .dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  position: absolute;
+  bottom: 4px;
+}
+
+/* ── ESSAY PAGE ── */
+
+.essay-header {
+  max-width: var(--essay-width);
+  margin: 0 auto;
+  padding: 3.5rem 2rem 0;
+}
+
+.essay-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  transition: color 0.12s;
+}
+
+.essay-back:hover {
+  color: var(--ink);
+}
+
+.essay-back::before {
+  content: '←';
+  font-size: 0.9rem;
+}
+
+.essay-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 0.6rem;
+}
+
+.essay-year-display {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 15vw, 7rem);
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--paper-rule);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
+.essay-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.essay-meta {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid var(--paper-rule);
+  border-bottom: 1px solid var(--paper-rule);
+  margin-bottom: 3rem;
+}
+
+.essay-meta-item {
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  letter-spacing: 0.05em;
+}
+
+.essay-meta-item strong {
+  color: var(--ink-mid);
+  font-weight: 600;
+}
+
+/* Essay body */
+
+.essay-body {
+  max-width: var(--essay-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.essay-body p {
+  margin-bottom: 1.4em;
+}
+
+.essay-body h2 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin: 2.5em 0 0.8em;
+  padding-top: 2em;
+  border-top: 1px solid var(--paper-rule);
+}
+
+.essay-body h2:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.essay-body blockquote {
+  border-left: 2px solid var(--accent-light);
+  margin: 2em 0;
+  padding: 0.5em 1.5em;
+  font-style: italic;
+  color: var(--ink-mid);
+}
+
+.essay-body .drop-cap::first-letter {
+  font-family: var(--serif);
+  font-size: 4.2em;
+  font-weight: 700;
+  float: left;
+  line-height: 0.75;
+  margin: 0.08em 0.1em 0 0;
+  color: var(--ink);
+}
+
+.essay-nav {
+  max-width: var(--essay-width);
+  margin: 3rem auto 0;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--paper-rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.essay-nav a {
+  text-decoration: none;
+  color: var(--ink-light);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.12s;
+}
+
+.essay-nav a:hover {
+  color: var(--accent);
+}
+
+.essay-nav .prev::before { content: '← '; }
+.essay-nav .next::after { content: ' →'; }
